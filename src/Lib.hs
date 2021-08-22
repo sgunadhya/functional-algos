@@ -76,28 +76,3 @@ weight :: Edge -> Weight
 weight (u,v,w) = w
 cp :: [[a]] -> [[a]]
 cp = foldr op[[]] where op xs yss = [x:ys|x <- xs,ys <- yss]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
