@@ -1,5 +1,5 @@
 module Lib where
-import Data.List
+import Data.List ( tails, partition)
 someFunc :: IO ()
 someFunc = putStrLn "someFunc"
 type SymList a = ([a], [a])
@@ -76,3 +76,11 @@ weight :: Edge -> Weight
 weight (u,v,w) = w
 cp :: [[a]] -> [[a]]
 cp = foldr op[[]] where op xs yss = [x:ys|x <- xs,ys <- yss]
+
+minfree xs = minfrom 0 (length xs, xs)
+minfrom a (n, xs) | n == 0 = a
+                  | m == b - a = minfrom b (n-m, vs)
+                  | otherwise = minfrom a (m, us) 
+                  where (us, vs) = partition (< b) xs
+                        b = a + 1 + n `div` 2
+                        m = length us
